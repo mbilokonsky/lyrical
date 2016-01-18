@@ -38,12 +38,25 @@ module.exports = function lookup(artist_name, callback) {
         if (urls.length === 0) {
           callback(null, completed);
         } else {
-          console.log("Loaded " + completed.length + " out of " + count + " songs.");
+          var percent = completed.length / count;
+          var ceiling = percent * 50;
+          var output = "Loading: [";
+          for (var i = 0; i < 50; i++) {
+            if (i >= ceiling) {
+              output += ".";
+            } else {
+              output += "=";
+            }
+          }
+
+          output += "]\r";
+
+          process.stdout.write(output);
           load_song(urls.pop(), handler)
         }
       }
 
-      load_song(urls.pop(), handler);
+      load_song(urls.shift(), handler);
     })
 }
 
@@ -53,13 +66,10 @@ function load_song(url, callback) {
     var song_title, song_lyrics, album, year;
 
     song_title = window.$('.page-title').text();
-    console.log(song_title, "->");
     if (song_title.charAt(0) === '"') {
       song_title = song_title.substr(1, song_title.length - 9);
-      console.log("\t", song_title);
     } else {
       song_title = song_title.substr(0, song_title.length - 7);
-      console.log("\t", song_title);
     }
 
 

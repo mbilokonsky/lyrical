@@ -17,7 +17,7 @@ lookup(artist_name, function(err, result) {
     return console.error(err);
   }
 
-  fs.writeFile(artist_name + ".json", JSON.stringify(result, null, 2), function(err) {
+  fs.writeFile("lyrics/" + artist_name + ".json", JSON.stringify(result, null, 2), function(err) {
     if (err) {
       console.log("I read the data ok, but had a hard time writing it to a file.")
       return console.error(err);
