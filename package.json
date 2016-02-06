@@ -4,7 +4,9 @@
   "description": "a tool to scrape lyrics sites for lyrics",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "load_artist": "node load_artist.js",
+    "build_corpus": "node build_corpus.js",
+    "markov": "node markov.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,9 +23,8 @@
   },
   "homepage": "https://github.com/mbilokonsky/lyrical#readme",
   "dependencies": {
-    "axios": "^0.8.1",
     "jsdom": "^7.2.2",
-    "rx": "^4.0.7",
-    "scrap": "^0.1.0"
+    "markov": "0.0.7",
+    "rhymes": "^1.0.1"
   }
 }

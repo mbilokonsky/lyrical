@@ -32,24 +32,31 @@ module.exports = function lookup(artist_name, callback) {
         if (err) {
           completed.push["error"]
         } else {
-          completed.push(result);
+          completed.push({
+            artist: artist_name,
+            album: result.album,
+            year: result.year,
+            title: result.title,
+            lyrics: result.lyrics
+          });
         }
 
         if (urls.length === 0) {
+          console.log("Loaded all " + count + " songs for " + artist_name + "\n\n");
           callback(null, completed);
         } else {
           var percent = completed.length / count;
           var ceiling = percent * 50;
-          var output = "Loading: [";
+          var output = "Loading " + artist_name + ": [";
           for (var i = 0; i < 50; i++) {
-            if (i >= ceiling) {
+            if (i > ceiling) {
               output += ".";
             } else {
               output += "=";
             }
           }
 
-          output += "]\r";
+          output += "] " + completed.length + "/" + count + " songs loaded.\r";
 
           process.stdout.write(output);
           load_song(urls.pop(), handler)
