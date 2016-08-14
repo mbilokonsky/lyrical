@@ -1,7 +1,7 @@
 # How to Use
 
   1. `npm install`
-  2. `npm run load_artist -- "artist name"
+  2. `npm run load_artist -- "artist name"`
   3. Lyrics will be in the `lyrics/` folder.
 
 # Notes
