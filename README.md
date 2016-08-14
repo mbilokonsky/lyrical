@@ -1,7 +1,11 @@
-This script, were it ever to be used, would scrape various websites for lyrics by artist name. I don't have permission to do any of this, and I don't recommend that you run this script. I have myself never run it.
+# How to Use
 
-Hypothetically, if you were to run it, you'd do something like this:Run this by typing:
+  1. `npm install`
+  2. `npm run load_artist -- "artist name"
+  3. Lyrics will be in the `lyrics/` folder.
 
-`npm start -- "Artist Name"`
+# Notes
 
-and you'll get `Artist Name.json` in this folder when it finishes.
+This uses various loaders for various lyric lookup sites. `lookup_azlyrics.js` seems to provide better values, but azlyrics will block your domain pretty quickly.
+
+I've found that `lookup_all_the_lyrics.js` works pretty well. There's also a custom david bowie lyric loader. You can swap out which loader you use in `load_artist.js` if you want to experiment, and you can see how they work if you want to write a custom one for some other lyrics site.
